@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paragraph Assistant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 60px;
+            background-color: #f7f9fc;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            font-size: 20px;
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            font-size: 20px;
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            font-size: 20px;
+            background: #fff;
+            padding: 18px;
+            margin-top: 25px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            min-height: 120px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #222;
+        }
+
+        .footer a {
+            color: #555;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>📝 Paragraph Assistant</h2>
+    <input type="text" id="prompt" placeholder="Enter your topic here..." />
+    <button onclick="generateParagraph()">Generate Paragraph</button>
+    <div class="output" id="result"></div>
+
+    <div class="footer">
+        Developed By – <a href="#" target="_blank">Mehadi Hassan</a>
+    </div>
+
+    <script>
+        async function generateParagraph() {
+            const prompt = document.getElementById("prompt").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (!prompt) {
+                resultDiv.innerHTML = "⚠️ Please enter a topic.";
+                return;
+            }
+
+            resultDiv.innerHTML = "⏳ Generating... Please wait.";
+            try {
+                const res = await fetch("/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ prompt }),
+                });
+
+                const data = await res.json();
+                resultDiv.innerHTML = data.result || `❌ Error: ${data.error || "Something went wrong"}`;
+            } catch (err) {
+                resultDiv.innerHTML = "❌ Failed to fetch. Please try again later.";
+            }
+        }
+    </script>
+</body>
+</html>
