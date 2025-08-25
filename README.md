@@ -1,6 +1,6 @@
 # 📝 Paragraph Assistant
 
-A simple web-based paragraph generator using **FastAPI** for backend and **vanilla HTML/CSS/JS** for frontend.
+A simple web-based paragraph generator using **FastAPI** for backend.
 
 ## 🚀 Features
 
@@ -11,11 +11,7 @@ A simple web-based paragraph generator using **FastAPI** for backend and **vanil
 
 ## 📁 Project Structure
 
-.
 ├── fast_api.py # FastAPI backend code
-├── templates/
-│ └── index.html # Frontend page
-├── static/ # (Optional) CSS or JS files
 ├── requirements.txt # Python dependencies
 ├── .env # Environment variables
 └── README.md # This file
@@ -35,3 +31,4 @@ API_KEY=your_api_key_here
 
 ▶️ Run the Project
 uvicorn fast_api:app --reload
+
