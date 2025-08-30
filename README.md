@@ -1,7 +1,7 @@
 <h1 align="center">📝 Paragraph Assistant</h1> 
 
 <p align="center">
-  <strong>Simple Web-based Paragraph Generator</strong><br>
+  <strong>Simple Web-based Paragraph Generator </strong><br>
   Powered by <code>FastAPI</code> and <code>AI</code>
 </p>
 
@@ -113,3 +113,4 @@ Created by <strong>Mehadi Hassan</strong> using FastAPI + AI for simple paragrap
 <hr>
 
 <p align="center">⭐ Star this repo if you find it useful!</p>
+
